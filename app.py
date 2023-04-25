@@ -7,6 +7,10 @@ from flask import (
 
 app = Flask(__name__)
 
+@app.errorhandler(404)
+def page_not_found(e):
+    return redirect(url_for('fortune'))
+
 @app.route('/')
 def index():
     return redirect(url_for('fortune'))
@@ -14,12 +18,12 @@ def index():
 @app.route('/fortune/')
 def fortune():
     output = subprocess.run(['fortune'], stdout=subprocess.PIPE)
-    return '<pre>' + output.stdout.decode() + '</pre>'
+    return f'<pre>{output.stdout.decode()}</pre>'
     
 @app.route('/cowsay/<message>/')
 def cowsay(message):
     output = subprocess.run(['cowsay', message], stdout=subprocess.PIPE)
-    return '<pre>' + output.stdout.decode() + '</pre>'
+    return f'<pre>{output.stdout.decode()}</pre>'
 
 @app.route('/cowfortune/')
 def cowfortune():
