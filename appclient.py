@@ -1,7 +1,7 @@
 import requests
 from sys import argv
 
-port = 5000
+port = 8002
 if len(argv) > 1:
     port = int(argv[1])
 

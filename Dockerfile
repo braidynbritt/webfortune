@@ -1,5 +1,7 @@
 FROM ubuntu:latest
 
+WORKDIR /app
+
 RUN apt-get update
 RUN apt-get install -y fortune fortunes
 RUN apt-get install -y cowsay
