@@ -26,6 +26,6 @@ def test_cowfortune(app, client):
     res = client.get('/cowfortune/')
     page_output = res.get_data(as_text=True)
 
-    match = re.search('[a-zA-Z]', page_output[5:-1])
+    match = re.search('[a-zA-Z]', page_output[5:(len(page_output)-5)])
     assert match != None
     assert "(oo)" in page_output
