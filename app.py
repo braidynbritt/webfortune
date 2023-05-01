@@ -7,7 +7,7 @@ from flask import (
 
 app = Flask(__name__)
 
-app.route('/')
+@app.route('/')
 def index():
     return redirect(url_for('fortune'))
 
